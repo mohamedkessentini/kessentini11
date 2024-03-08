@@ -1,7 +1,6 @@
 package com.test.demo.utils.mapper;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.stream.Collectors;
 public class MapperImpl {
     private final ModelMapper modelMapper;
  
-    @Autowired
     public MapperImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
