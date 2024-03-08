@@ -1,4 +1,4 @@
-package com.test.demo.dao;
+package com.test.demo.dao.interfaces;
 
 import java.util.List;
 import java.util.Map;

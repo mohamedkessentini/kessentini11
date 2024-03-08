@@ -1,4 +1,4 @@
-package com.test.demo.daoImpl;
+package com.test.demo.dao.implementation;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.test.demo.dao.Dao;
+import com.test.demo.dao.interfaces.Dao;
+import com.test.demo.utils.TempTables;
 
 
 
@@ -29,6 +30,9 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public List<List<Map<String, Object>>> execQueryResult(String sqlBlock) {
+		if (!TempTables.aprt_imp_01) {/*CREATE THE TEMP TABLE*/
+			/*TODO: IMPLEMENT A METHOD THAT CREATES TEMP TABLES THEN CALL IT HERE*/
+		}
 		return jdbcTemplate.execute((Connection con) -> {
 			List<List<Map<String, Object>>> resultList = new ArrayList<>();
 			try (PreparedStatement cs = con.prepareStatement(sqlBlock)) {
@@ -47,7 +51,6 @@ public class DaoImpl implements Dao {
 									row.put(columnName, columnValue);
 								}
 								resultSet.add(row);
-								System.out.println("ROW ADDED....");
 							}
 						}
 						resultList.add(resultSet);
